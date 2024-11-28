@@ -1,19 +1,27 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet,  Dimensions, } from 'react-native';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
 import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 type HomeScreenProps = {
   navigation: DrawerNavigationProp<any>;
 };
-
+let scale = Dimensions.get('screen').scale / Dimensions.get('window').scale;
+const height = Dimensions.get('window').height * scale;
+const width = Dimensions.get('window').width * scale;
 const HomeScreen: React.FC<HomeScreenProps> = () => {
   const navigation = useNavigation<DrawerNavigationProp<any>>();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Bienvenido a la App</Text>
-      <Button title="Abrir Menú" onPress={() => navigation.openDrawer()} />
+
+      <Text style={styles.title}>Arma tu publicaciones para redes</Text>
+      <TouchableOpacity style={styles.touchableOpacity} onPress={() => navigation.openDrawer()} >
+        <Text
+         
+        style={styles.text1}>Armar publicacion</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -21,13 +29,24 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    padding: width * 0.06
   },
   title: {
-    fontSize: 24,
+    fontFamily: 'BarlowCondensed-Regular',
+    fontSize: height * 0.05,
     marginBottom: 20,
   },
+  touchableOpacity: {
+    marginTop: height * 0.4,
+    padding: 10,
+    backgroundColor: 'gray',
+    borderRadius:10
+  },
+  text1: {
+    fontFamily: 'BarlowCondensed-Regular',
+    color: 'white'
+  }
 });
 
 export default HomeScreen;

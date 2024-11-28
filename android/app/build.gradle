@@ -78,6 +78,12 @@ android {
     compileSdk rootProject.ext.compileSdkVersion
 
     namespace "com.simpleado"
+    externalNativeBuild {
+    cmake {
+        version "5.0.0"
+    }
+}
+
     defaultConfig {
         applicationId "com.simpleado"
         minSdkVersion rootProject.ext.minSdkVersion
