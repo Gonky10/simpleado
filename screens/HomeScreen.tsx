@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet,  Dimensions, } from 'react-native';
+import { View, Text, Button, StyleSheet,  Dimensions, Image} from 'react-native';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -15,8 +15,9 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
 
   return (
     <View style={styles.container}>
-
-      <Text style={styles.title}>Arma tu publicaciones para redes</Text>
+      <View style={styles.containerTitle}>
+        <Text style={styles.title}>Arma tus publicaciones para redes</Text>
+      </View>
       <TouchableOpacity style={styles.touchableOpacity} onPress={() => navigation.openDrawer()} >
         <Text
          
@@ -32,15 +33,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: width * 0.06
   },
+  containerTitle: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding:width * 0.04,
+    borderRadius:15,
+    marginTop: height * 0.03,
+    backgroundColor: 'black'
+  },
   title: {
     fontFamily: 'BarlowCondensed-Regular',
     fontSize: height * 0.05,
-    marginBottom: 20,
+    color: 'white',
+    textAlign: 'center'
   },
   touchableOpacity: {
     marginTop: height * 0.4,
     padding: 10,
-    backgroundColor: 'gray',
+    backgroundColor: 'black',
     borderRadius:10
   },
   text1: {
