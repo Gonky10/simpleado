@@ -4,6 +4,9 @@ import { SafeAreaView, Dimensions,Image} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeScreen from './screens/HomeScreen';
+import Flyer from './screens/Flyer';
+import {authorize} from 'react-native-app-auth';
+
 import PostScreen from './screens/PostScreen';
 const Drawer = createDrawerNavigator();
 let scale = Dimensions.get('screen').scale / Dimensions.get('window').scale;
@@ -43,6 +46,11 @@ export default function App() {
             name="Post"
             component={PostScreen}
             options={{ title: 'Posteos' }} // Cambia el título si lo necesitas
+          />
+        <Drawer.Screen
+            name="Flyer"
+            component={Flyer}
+            options={{ title: 'Flyer' }} // Cambia el título si lo necesitas
           />
       </Drawer.Navigator>
     </NavigationContainer>
