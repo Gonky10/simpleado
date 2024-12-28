@@ -70,6 +70,15 @@
 <string>a29610838bb7d0e688f2d151a185231d</string>
 <key>FacebookDisplayName</key>
 <string>Simpleado</string>
+<key>UIFileSharingEnabled</key>
+<true/>
+<key>LSSupportsOpeningDocumentsInPlace</key>
+<true/>
+<key>NSDocumentsFolderUsageDescription</key>
+<string>Esta aplicación necesita acceso a tus documentos para guardar y abrir archivos PDF.</string>
+<key>NSFileProtectionType</key>
+<string>NSFileProtectionCompleteUntilFirstUserAuthentication</string>
+
 <key>LSApplicationQueriesSchemes</key>
 <array>
   <string>fbapi</string>

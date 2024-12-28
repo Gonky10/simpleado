@@ -28,6 +28,227 @@ const [recipientName, setRecipientName] = useState('');
   const [footerColor, setFooterColor] = useState('#4CAF50');
   const [isColorPickerVisible, setIsColorPickerVisible] = useState(false);
   const [currentColorTarget, setCurrentColorTarget] = useState(''); // 'header' | 'footer'
+  // const generateHTML = () => {
+  //   return `
+  //     <html>
+  //       <head>
+  //         <style>
+  //           @page {
+  //             size: A4;
+  //             margin: 0;
+  //           }
+  //           body {
+  //             font-family: Arial, sans-serif;
+  //             margin: 0;
+  //             padding: 0;
+  //             height: 100vh;
+  //             display: flex;
+  //             flex-direction: column;
+  //             justify-content: center;
+  //             align-items: center;
+  //             text-align: center;
+  //             background-color: #f7f7f7;
+  //           }
+
+  //           .header, .footer {
+  //             width: 100%;
+  //             text-align: center;
+  //             font-weight: bold;
+  //             position: fixed;
+  //             left: 0;
+              
+  //           }
+
+  //           .header {
+  //             top: 0;
+  //             height: ${headerHeight}vh;
+  //             line-height: ${headerHeight}vh;
+  //             background-color: ${headerColor};
+  //             color: white;
+  //             font-size: 5vh;
+  //           }
+
+  //           .footer {
+  //             bottom: 0;
+  //             height: ${footerHeight}vh;
+  //             line-height: ${footerHeight}vh;
+  //             background-color: ${headerColor};
+  //             color: white;
+  //             font-size: 6vh;
+  //           }
+
+  //           .content {
+  //             flex: 1;
+  //             display: flex;
+  //             justify-content: center;
+  //             align-items: center;
+  //             width: 100%;
+  //             margin-top: calc(${headerHeight}vh + 1vh);
+  //             margin-bottom: calc(${footerHeight}vh + 1vh);
+  //           }
+
+  //           .card {
+  //             width: 80%;
+  //             height: 60%;
+  //             padding: 5%;
+  //             background-color: #ffffff;
+  //             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  //             border-radius: 10px;
+  //             display: flex;
+  //             flex-direction: column;
+  //             justify-content: center;
+  //             align-items: center;
+  //           }
+
+  //           .title {
+  //             font-size: 8vh;
+  //             font-weight: bold;
+  //             margin-bottom: 2vh;
+  //             color: #333;
+  //           }
+
+  //           .details {
+  //             font-size: 6vh;
+  //             margin: 1vh 0;
+  //             color: #555;
+  //           }
+
+  //           .footer-text {
+  //             font-size: 2vh;
+  //           }
+  //         </style>
+  //       </head>
+  //       <body>
+  //         <div class="header">🎉 Invitación Especial 🎉</div>
+  //         <div class="content">
+  //           <div class="card">
+  //             <div class="title">${ recipientName || '(Titulo)'}</div>
+  //             <div class="details">📅 Fecha: <strong>${eventDate || '(Fecha)'}</strong></div>
+  //             <div class="details">⏰ Hora: <strong>${eventTime || '(Hora)'}</strong></div>
+  //             <div class="details">📍 Lugar: <strong>${eventLocation || '(Ubicación)'}</strong></div>
+  //           </div>
+  //         </div>
+  //         <div class="footer">${organizerName || '(Organizador)'}</div>
+  //       </body>
+  //     </html>
+  //   `;
+  // };
+
+  // const generateHTML = () => {
+  //   return `
+  //     <html>
+  //       <head>
+  //         <style>
+  //           @page {
+  //             size: A4;
+  //             margin: 0;
+  //           }
+  
+  //           /* Estilos generales */
+  //           body {
+  //             font-family: Arial, sans-serif;
+  //             margin: 0;
+  //             padding: 0;
+  //             text-align: center;
+  //             background-color: #f7f7f7;
+  //           }
+  
+  //           /* Contenedor Principal */
+  //           .container {
+  //             width: 100%;
+  //             display: flex;
+  //             flex-direction: column;
+  //             justify-content: space-between;
+  //             align-items: center;
+  //           }
+  
+  //           /* Header */
+  //           .header {
+  //             width: 100%;
+  //             height: 80px;
+  //             font-size: 24px;
+  //             font-weight: bold;
+  //             color: white;
+  //             display: flex;
+  //             justify-content: center;
+  //             align-items: center;
+  //             margin-bottom: 20px;
+  //             background: linear-gradient(90deg, ${headerColor || '#4CAF50'}, ${headerColor || '#388E3C'});
+  //           }
+  
+  //           /* Contenido Principal */
+  //           .content {
+  //             width: 90%;
+  //             flex: 1;
+  //             display: flex;
+  //             justify-content: center;
+  //             align-items: center;
+  //             margin: 20px 0;
+  //           }
+  
+  //           .card {
+  //             width: 100%;
+  //             padding: 20px;
+  //             background-color: #ffffff;
+  //             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  //             border-radius: 10px;
+  //             text-align: center;
+  //           }
+  
+  //           .title {
+  //             font-size: 28px;
+  //             font-weight: bold;
+  //             margin-bottom: 10px;
+  //             color: #333;
+  //           }
+  
+  //           .details {
+  //             font-size: 18px;
+  //             margin: 5px 0;
+  //             color: #555;
+  //           }
+  
+  //           /* Footer */
+  //           .footer {
+  //             width: 100%;
+  //             height: 60px;
+  //             font-size: 16px;
+  //             color: white;
+  //             display: flex;
+  //             justify-content: center;
+  //             align-items: center;
+  //             margin-top: 20px;
+  //             background: linear-gradient(90deg, ${footerColor || '#4CAF50'}, ${footerColor || '#388E3C'});
+  //           }
+  //         </style>
+  //       </head>
+  //       <body>
+  //         <div class="container">
+  //           <!-- Header -->
+  //           <div class="header">
+  //             🎉 Invitación Especial 🎉
+  //           </div>
+            
+  //           <!-- Contenido Principal -->
+  //           <div class="content">
+  //             <div class="card">
+  //               <div class="title">${recipientName || '(Título)'}</div>
+  //               <div class="details">📅 Fecha: <strong>${eventDate || '(Fecha)'}</strong></div>
+  //               <div class="details">⏰ Hora: <strong>${eventTime || '(Hora)'}</strong></div>
+  //               <div class="details">📍 Lugar: <strong>${eventLocation || '(Ubicación)'}</strong></div>
+  //             </div>
+  //           </div>
+            
+  //           <!-- Footer -->
+  //           <div class="footer">
+  //             Organizado por: ${organizerName || '(Organizador)'}
+  //           </div>
+  //         </div>
+  //       </body>
+  //     </html>
+  //   `;
+  // };
+  
   const generateHTML = () => {
     return `
       <html>
@@ -37,102 +258,118 @@ const [recipientName, setRecipientName] = useState('');
               size: A4;
               margin: 0;
             }
+  
             body {
               font-family: Arial, sans-serif;
               margin: 0;
               padding: 0;
-              height: 100vh;
+              text-align: center;
+              background-color: black;
+            }
+  
+            /* Contenedor General */
+            .wrapper {
+              width: 100%;
+              height: 100%;
               display: flex;
               flex-direction: column;
-              justify-content: center;
-              align-items: center;
-              text-align: center;
-              background-color: #f7f7f7;
+              justify-content: space-between;
             }
-
-            .header, .footer {
+  
+            /* Header */
+            .header-container {
               width: 100%;
-              text-align: center;
-              font-weight: bold;
-              position: fixed;
-              left: 0;
-              
+              height: 80px;
+              background-color: ${headerColor || '#4CAF50'};
+              display: flex;
+              align-items: center;
+              justify-content: center;
             }
-
+  
             .header {
-              top: 0;
-              height: ${headerHeight}vh;
-              line-height: ${headerHeight}vh;
-              background-color: ${headerColor};
+              font-size: 24px;
+              font-weight: bold;
               color: white;
-              font-size: 5vh;
             }
-
-            .footer {
-              bottom: 0;
-              height: ${footerHeight}vh;
-              line-height: ${footerHeight}vh;
-              background-color: ${headerColor};
-              color: white;
-              font-size: 6vh;
-            }
-
+  
+            /* Contenido */
             .content {
               flex: 1;
               display: flex;
               justify-content: center;
               align-items: center;
-              width: 100%;
-              margin-top: calc(${headerHeight}vh + 1vh);
-              margin-bottom: calc(${footerHeight}vh + 1vh);
+              margin: 20px;
             }
-
+  
             .card {
               width: 80%;
-              height: 60%;
-              padding: 5%;
+              padding: 20px;
               background-color: #ffffff;
               box-shadow: 0 4px 8px rgba(0,0,0,0.1);
               border-radius: 10px;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
+              text-align: center;
             }
-
+  
             .title {
-              font-size: 8vh;
+              font-size: 28px;
               font-weight: bold;
-              margin-bottom: 2vh;
+              margin-bottom: 10px;
               color: #333;
             }
-
+  
             .details {
-              font-size: 6vh;
-              margin: 1vh 0;
+              font-size: 18px;
+              margin: 5px 0;
               color: #555;
             }
-
-            .footer-text {
-              font-size: 2vh;
+  
+            /* Footer */
+            .footer-container {
+              width: 100%;
+              height: 60px;
+              background-color: ${footerColor || '#4CAF50'};
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+  
+            .footer {
+              font-size: 16px;
+              color: white;
             }
           </style>
         </head>
         <body>
-          <div class="header">🎉 Invitación Especial 🎉</div>
-          <div class="content">
-            <div class="card">
-              <div class="title">${ recipientName || '(Titulo)'}</div>
-              <div class="details">📅 Fecha: <strong>${eventDate || '(Fecha)'}</strong></div>
-              <div class="details">⏰ Hora: <strong>${eventTime || '(Hora)'}</strong></div>
-              <div class="details">📍 Lugar: <strong>${eventLocation || '(Ubicación)'}</strong></div>
+          <div class="wrapper">
+            <!-- Header -->
+            <div class="header-container">
+              <div class="header">🎉 Invitación Especial 🎉</div>
+            </div>
+  
+            <!-- Contenido -->
+            <div class="content">
+              <div class="card">
+                <div class="title">${recipientName || '(Título)'}</div>
+                <div class="details">📅 Fecha: <strong>${eventDate || '(Fecha)'}</strong></div>
+                <div class="details">⏰ Hora: <strong>${eventTime || '(Hora)'}</strong></div>
+                <div class="details">📍 Lugar: <strong>${eventLocation || '(Ubicación)'}</strong></div>
+              </div>
+            </div>
+  
+            <!-- Footer -->
+            <div class="footer-container">
+              <div class="footer">Organizado por: ${organizerName || '(Organizador)'}</div>
             </div>
           </div>
-          <div class="footer">${organizerName || '(Organizador)'}</div>
         </body>
       </html>
     `;
   };
+  
+  
+  
+  
+  
 
   const applyColor = (color) => {
     if (currentColorTarget === 'header') {
@@ -158,11 +395,15 @@ const [recipientName, setRecipientName] = useState('');
         html: generateHTML(),
         fileName: 'Flyer_Cumpleaños',
         directory: 'Documents',
+        base64: true,
+        height:792,
+        width: 612
       };
-  
+      console.log("filefilefile: ", options);
+
       try {
         const file = await RNHTMLtoPDF.convert(options);
-    
+        
         // Intenta abrir el archivo PDF automáticamente
         await FileViewer.open(file.filePath, { showOpenWithDialog: true, type: 'application/pdf' });
       } catch (err) {
