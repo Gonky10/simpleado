@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { View, Text, Button, StyleSheet,  Dimensions, Image, ActivityIndicator,ScrollView, TextInput, Modal} from 'react-native';
+import { View, Text, Button, StyleSheet,KeyboardAvoidingView,  Dimensions, Image, ActivityIndicator,ScrollView, TextInput, Modal} from 'react-native';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -263,6 +263,11 @@ const takePhoto = () => {
       }
     };
   return (
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0} // Ajusta según la barra de navegación
+    >
     <View style={{
           flex: 1,
           padding: 20,
@@ -330,6 +335,7 @@ const takePhoto = () => {
         <ColorPicker onColorSelected={applyColor} style={{ flex: 1 }} />
       </Modal>
         </View>
+        </KeyboardAvoidingView>
   );
 };
 
