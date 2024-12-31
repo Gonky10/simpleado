@@ -266,7 +266,7 @@ const takePhoto = () => {
     <KeyboardAvoidingView
       style={{ flex: 1 }}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0} // Ajusta según la barra de navegación
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 50 : 0} // Ajusta según la barra de navegación
     >
     <View style={{
           flex: 1,
@@ -381,7 +381,7 @@ const styles = StyleSheet.create({
 
   previewContainer: {
     marginTop: 20,
-    height: height * 0.3,
+    height: height * 0.27,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
