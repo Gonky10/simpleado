@@ -302,8 +302,23 @@ const takePhoto = () => {
       <TextInput style={styles.input} value={footerHeight} onChangeText={setFooterHeight} keyboardType="numeric" />
           <View style={styles.botonesFotos}>
           <Text style={styles.label}>Añadir imagenes:</Text>
-            <Button title="Seleccionar Imagen" onPress={selectImage} />
-            <Button title="Tomar Foto" onPress={takePhoto} />
+
+
+            <TouchableOpacity style={styles.añadeFotos}>
+              <Text  style={
+            styles.onpressText
+          }
+          onPress={selectImage}>Seleccionar Imagen</Text>
+            </TouchableOpacity>
+
+
+            <TouchableOpacity onPress= {takePhoto} style={styles.añadeFotos}>
+              <Text  style={
+            styles.onpressText
+          }>Tomar Foto</Text>
+            </TouchableOpacity>
+
+
             {imageURI ? <Image source={{ uri: imageURI }} style={styles.imagePreview} /> : null}
           </View>
 
@@ -411,6 +426,15 @@ width: width *0.3,
     marginTop: height * 0.02,
     alignItems :'flex-start',
     justifyContent: 'center'
+  },
+  añadeFotos: {
+    alignItems:'center',
+    justifyContent: 'center',
+    backgroundColor: 'black',
+    borderRadius:10,
+    margin:7,
+    width: width * 0.3,
+    height: height * 0.05
   }
 });
 
