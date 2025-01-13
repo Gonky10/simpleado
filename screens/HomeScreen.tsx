@@ -199,7 +199,7 @@ const takePhoto = () => {
     } else if (response.errorMessage) {
       alert('Error', response.errorMessage);
     } else {
-      console.log();
+      console.log(response);
       
       const source = response.assets[0].uri;
       setImageURI(source);
@@ -297,18 +297,26 @@ const takePhoto = () => {
           
           <Text style={styles.label}>Nombre del organizador:</Text>
           <TextInput style={styles.input} value={organizerName} onChangeText={setOrganizerName} />
-    <Text style={styles.label}>Altura del Header (%):</Text>
+    <Text style={styles.label}>Altura de la barra superior (%):</Text>
     <TextInput style={styles.input} value={headerHeight} onChangeText={setHeaderHeight} keyboardType="numeric" />
-      <Text style={styles.label}>Color del Header y footer:</Text>
+    <Text style={styles.label}>Altura de la barra inferior (%):</Text>
+    <TextInput style={styles.input} value={footerHeight} onChangeText={setFooterHeight} keyboardType="numeric" />
+      <Text style={styles.label}>Color de las barras:</Text>
       <TouchableOpacity onPress={() => openColorPicker('header')} style={styles.colorButton}>
         <Text style={{ color: headerColor }}>Seleccionar color del Header</Text>
       </TouchableOpacity>
-      <Text style={styles.label}>Altura del Footer (vh):</Text>
-      <TextInput style={styles.input} value={footerHeight} onChangeText={setFooterHeight} keyboardType="numeric" />
           <View style={styles.botonesFotos}>
           <Text style={styles.label}>Añadir imagenes:</Text>
-            <Button title="Seleccionar Imagen" onPress={selectImage} />
-            <Button title="Tomar Foto" onPress={takePhoto} />
+
+
+            <TouchableOpacity style={styles.añadeFotos}
+            onPress={() => selectImage()}>
+              <Text  style={
+            styles.onpressText
+          }
+          >Seleccionar Imagen</Text>
+            </TouchableOpacity>
+
             {imageURI ? <Image source={{ uri: imageURI }} style={styles.imagePreview} /> : null}
           </View>
 
@@ -405,7 +413,8 @@ width: width *0.3,
   onpressText: {
     color: 'white',
     fontSize:height * 0.013,
-    fontWeight:'bold'
+    fontWeight:'bold',
+    padding: 3
   },
   imagePreview: {
     width: 200,
@@ -417,6 +426,15 @@ width: width *0.3,
     marginTop: height * 0.02,
     alignItems :'flex-start',
     justifyContent: 'center'
+  },
+  añadeFotos: {
+    alignItems:'center',
+    justifyContent: 'center',
+    backgroundColor: 'black',
+    borderRadius:10,
+    margin:7,
+    width: width * 0.3,
+    height: height * 0.05
   }
 });
 

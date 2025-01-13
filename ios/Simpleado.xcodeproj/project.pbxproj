@@ -15,6 +15,7 @@
 		7699B88040F8A987B510C191 /* libPods-Simpleado-SimpleadoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Simpleado-SimpleadoTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A59FBC552CF93E3D00FE6287 /* BarlowCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A59FBC542CF93E3D00FE6287 /* BarlowCondensed-Regular.ttf */; };
+		A5E236FE2D285D2600F101F0 /* splash_log.png in Resources */ = {isa = PBXBuildFile; fileRef = A5E236FD2D285D2600F101F0 /* splash_log.png */; };
 		B54CC53C19AAFE880255C43D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 720AE1E95DD8922907088405 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		89C6BE57DB24E9ADA2F236DE /* Pods-Simpleado-SimpleadoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simpleado-SimpleadoTests.release.xcconfig"; path = "Target Support Files/Pods-Simpleado-SimpleadoTests/Pods-Simpleado-SimpleadoTests.release.xcconfig"; sourceTree = "<group>"; };
 		A569AC652D0B99A700886275 /* Simpleado.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Simpleado.entitlements; path = Simpleado/Simpleado.entitlements; sourceTree = "<group>"; };
 		A59FBC542CF93E3D00FE6287 /* BarlowCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowCondensed-Regular.ttf"; sourceTree = "<group>"; };
+		A5E236FD2D285D2600F101F0 /* splash_log.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_log.png; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -99,6 +101,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
+				A5E236FD2D285D2600F101F0 /* splash_log.png */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				720AE1E95DD8922907088405 /* PrivacyInfo.xcprivacy */,
@@ -253,6 +256,7 @@
 			files = (
 				A59FBC552CF93E3D00FE6287 /* BarlowCondensed-Regular.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				A5E236FE2D285D2600F101F0 /* splash_log.png in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				B54CC53C19AAFE880255C43D /* PrivacyInfo.xcprivacy in Resources */,
 			);

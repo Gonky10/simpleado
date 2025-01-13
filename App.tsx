@@ -31,7 +31,7 @@ export default function App() {
         headerRight: () => (
           <Image
             source={require('./assets/images/simpleado-logo.png')}
-            style={{ width: width * 0.1, height: height * 0.05, marginRight: 10, borderRadius:10 }}
+            style={{ width: width * 0.1, height: height * 0.038, marginRight: 10, borderRadius:10 }}
           />
         ),
         headerTitleAlign: 'center',
