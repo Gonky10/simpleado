@@ -6,6 +6,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeScreen from './screens/HomeScreen';
 import Flyer from './screens/Flyer';
 import {authorize} from 'react-native-app-auth';
+import ResumeTxt from './screens/ResumeTxt';
 
 import PostScreen from './screens/PostScreen';
 const Drawer = createDrawerNavigator();
@@ -51,6 +52,11 @@ export default function App() {
             name="Flyer"
             component={Flyer}
             options={{ title: 'Flyer' }} // Cambia el título si lo necesitas
+          />
+          <Drawer.Screen
+            name="Resumeador"
+            component={ResumeTxt}
+            options={{ title: 'Resumeador' }} // Cambia el título si lo necesitas
           />
       </Drawer.Navigator>
     </NavigationContainer>

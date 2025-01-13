@@ -1,8 +1,7 @@
 import React, { useState, useEffect} from 'react';
-import { View, Text, Button, StyleSheet,KeyboardAvoidingView,  Dimensions, Image, ActivityIndicator,ScrollView, TextInput, Modal} from 'react-native';
+import { View, Text, Button, StyleSheet,KeyboardAvoidingView,  Dimensions, TouchableOpacity, Image, ActivityIndicator,ScrollView, TextInput, Modal} from 'react-native';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
 import { useNavigation } from '@react-navigation/native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AccessToken, LoginButton } from 'react-native-fbsdk-next';
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
 import { WebView } from 'react-native-webview';
@@ -10,6 +9,7 @@ import { ColorPicker } from 'react-native-color-picker';
 import FileViewer from 'react-native-file-viewer';
 import { launchImageLibrary, launchCamera } from 'react-native-image-picker';
 import RNFS from 'react-native-fs';
+
 type HomeScreenProps = {
   navigation: DrawerNavigationProp<any>;
 };
@@ -17,6 +17,7 @@ let scale = Dimensions.get('screen').scale / Dimensions.get('window').scale;
 const height = Dimensions.get('window').height * scale;
 const width = Dimensions.get('window').width * scale;
 const HomeScreen: React.FC<HomeScreenProps> = () => {
+  const [activityIndicator, setActivityIndicator] = useState(false); // Estado para el HTML final
   const navigation = useNavigation<DrawerNavigationProp<any>>();
 const [recipientName, setRecipientName] = useState('');
   const [eventDate, setEventDate] = useState('');
@@ -30,10 +31,15 @@ const [recipientName, setRecipientName] = useState('');
   const [isColorPickerVisible, setIsColorPickerVisible] = useState(false);
   const [currentColorTarget, setCurrentColorTarget] = useState(''); // 'header' | 'footer'
   const [imageURI, setImageURI] = useState('');
-  const [activityIndicator, setActivityIndicator] = useState(false); // Estado para el HTML final
   const [htmlContent, setHtmlContent] = useState(''); // Estado para el HTML final
 
+  const openDrawer = () => {
+    navigation.openDrawer(); // Abre el Drawer
+  };
 
+  const navigateToScreen = (screenName: string) => {
+    navigation.navigate(screenName); // Navega a la pantalla especificada
+  };
 
 useEffect(() => {
   const updateHTML = async () => {
@@ -273,75 +279,36 @@ const takePhoto = () => {
           padding: 20,
           backgroundColor: '#fff',
         }}>
-                    <Text style={styles.title}>Generador de Flyers</Text>
-
-          <View style={styles.previewContainer}>
-            <WebView
-              originWhitelist={['*']}
-              source={{ html: htmlContent }}
-              style={styles.webview}
-            />
-          </View>
-    <ScrollView style={styles.container}>
-    <Text style={styles.label}>Titulo:</Text>
-          <TextInput style={styles.input} value={recipientName} onChangeText={setRecipientName} />
           
-          <Text style={styles.label}>Fecha del evento:</Text>
-          <TextInput style={styles.input} value={eventDate} onChangeText={setEventDate} />
-          
-          <Text style={styles.label}>Hora del evento:</Text>
-          <TextInput style={styles.input} value={eventTime} onChangeText={setEventTime} />
-          
-          <Text style={styles.label}>Ubicación del evento:</Text>
-          <TextInput style={styles.input} value={eventLocation} onChangeText={setEventLocation} />
-          
-          <Text style={styles.label}>Nombre del organizador:</Text>
-          <TextInput style={styles.input} value={organizerName} onChangeText={setOrganizerName} />
-    <Text style={styles.label}>Altura de la barra superior (%):</Text>
-    <TextInput style={styles.input} value={headerHeight} onChangeText={setHeaderHeight} keyboardType="numeric" />
-    <Text style={styles.label}>Altura de la barra inferior (%):</Text>
-    <TextInput style={styles.input} value={footerHeight} onChangeText={setFooterHeight} keyboardType="numeric" />
-      <Text style={styles.label}>Color de las barras:</Text>
-      <TouchableOpacity onPress={() => openColorPicker('header')} style={styles.colorButton}>
-        <Text style={{ color: headerColor }}>Seleccionar color del Header</Text>
-      </TouchableOpacity>
-          <View style={styles.botonesFotos}>
-          <Text style={styles.label}>Añadir imagenes:</Text>
-
-
-            <TouchableOpacity style={styles.añadeFotos}
-            onPress={() => selectImage()}>
-              <Text  style={
-            styles.onpressText
-          }
-          >Seleccionar Imagen</Text>
-            </TouchableOpacity>
-
-            {imageURI ? <Image source={{ uri: imageURI }} style={styles.imagePreview} /> : null}
-          </View>
-
-
-          <TouchableOpacity  style={
-            styles.onpress
-          } onPress={onGeneratePDF} >
-            {activityIndicator == true ?
-            <>
-            <ActivityIndicator
-                  size="large"
-                  color="#FEFEFE"
-                />
-            </>:
-            <>
-            <Text  style={
-            styles.onpressText
-          }>Guardar</Text>
-            </>}
-            
-          </TouchableOpacity>
-        </ScrollView>
-        <Modal visible={isColorPickerVisible}>
-        <ColorPicker onColorSelected={applyColor} style={{ flex: 1 }} />
-      </Modal>
+                    <Text style={styles.titleP}>Bienvenido a la aplicacion que aporta soluciones</Text>
+                    <View style={styles.cuerpo}>
+                    <TouchableOpacity style={styles.touchableNavigate} onPress={() => navigateToScreen('Flyer')}>
+                      <Text style={styles.title}>Flyers</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.touchableNavigate} onPress={() => navigateToScreen('Resumeador')}>
+                    <Text style={styles.title}>Resumenes de textos</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.touchableNavigate} onPress={() => navigateToScreen('Posteos')}>
+                    <Text style={styles.title}>Transcripciones</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity  style={
+                                styles.onpress
+                              } onPress={openDrawer} >
+                                {activityIndicator == true ?
+                                <>
+                                <ActivityIndicator
+                                      size="large"
+                                      color="#FEFEFE"
+                                    />
+                                </>:
+                                <>
+                                <Text  style={
+                                styles.onpressText
+                              }>Empezar</Text>
+                                </>}
+                                
+                              </TouchableOpacity>
+                    </View>
         </View>
         </KeyboardAvoidingView>
   );
@@ -353,13 +320,29 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#fff',
   },
+  touchableNavigate:{
+    marginTop: height * 0.03,
+    padding:8,
+    borderWidth: 3,
+    borderColor: 'black',
+    borderRadius:5,
+    alignItems: 'center',
+    justifyContent:'center'
+  },
   title: {
     fontFamily: 'BarlowCondensed-Regular',
     fontSize: height * 0.03,
     fontWeight: '500',
-    marginTop: height * 0.03,
     color: 'black',
+  },
+  titleP:{
+    fontFamily: 'BarlowCondensed-Regular',
+    fontSize: height * 0.03,
+    fontWeight: '500',
+    marginTop: height * 0.03,
+    color: 'white',
     padding:8,
+    backgroundColor: 'black',
     borderWidth: 3,
     borderColor: 'black',
     borderRadius:5,
@@ -378,6 +361,9 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: 5,
     borderRadius: 5,
+  },
+  cuerpo:{
+    marginTop: height * 0.1
   },
   previewTitle: {
     fontSize: 18,
@@ -412,7 +398,7 @@ width: width *0.3,
   },
   onpressText: {
     color: 'white',
-    fontSize:height * 0.013,
+    fontSize:height * 0.018,
     fontWeight:'bold',
     padding: 3
   },
@@ -435,7 +421,7 @@ width: width *0.3,
     margin:7,
     width: width * 0.3,
     height: height * 0.05
-  }
+  },
 });
 
 
